@@ -8,7 +8,7 @@ app = func.FunctionApp()
     arg_name="azservicebus",
     queue_name="estoque",
     connection="dental_RootManageSharedAccessKey_SERVICEBUS",
-    is_session_enabled=True,
+    is_sessions_enabled=True,
 )
 def servicebus_queue_trigger_update_estoque(azservicebus: func.ServiceBusMessage):
     logging.info(
