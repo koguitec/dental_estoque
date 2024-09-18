@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 app = func.FunctionApp()
 
 sql_query = """
-    DECLARE IDProduto INT;
+    DECLARE @IDProduto INT;
     SET @IDProduto = (SELECT IDProduto From Produto WHERE CodigoERP = ?);
 
 
