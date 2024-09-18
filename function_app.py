@@ -2,7 +2,7 @@ import azure.functions as func
 import json
 import logging
 
-# from additional_functions import order_items, update_database
+from additional_functions import order_items, update_database
 
 logger = logging.getLogger(__name__)
 
@@ -32,10 +32,10 @@ def servicebus_queue_trigger_update_estoque(azservicebus: func.ServiceBusMessage
         return
 
     # Order the payment data
-    # ordered_data = order_items(payload)
+    ordered_data = order_items(payload)
 
-    # # Update the database
-    # try:
-    #     update_database(ordered_data)
-    # except Exception as e:
-    #     logger.error(f"Failed to update database: {e}")
+    # Update the database
+    try:
+        update_database(ordered_data)
+    except Exception as e:
+        logger.error(f"Failed to update database: {e}")
