@@ -18,9 +18,9 @@ sql_query = """
     SET 
         SaldoTotal = ?,
         CustoProduto = ?,
-        DtAlteracao = dbo.getdate2(),
+        DtAlteracao = dbo.getdate2()
     WHERE
-        CodigoFilial = ? AND IDProduto = @IDProduto
+        CodigoFilial = ? AND IDProduto = @IDProduto;
 """
 
 
