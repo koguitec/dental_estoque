@@ -2,8 +2,8 @@ import azure.functions as func
 import json
 import logging
 
-from include.db import update_database
-from helpers import order_items
+# from include.db import update_database
+# from helpers import order_items
 
 logger = logging.getLogger(__name__)
 
@@ -22,21 +22,21 @@ def servicebus_queue_trigger_update_estoque(azservicebus: func.ServiceBusMessage
         azservicebus.get_body().decode("utf-8"),
     )
 
-    # Parse the message body
-    message = azservicebus.get_body().decode("utf-8")
+    # # Parse the message body
+    # message = azservicebus.get_body().decode("utf-8")
 
-    # Assuming the message body contains a list of items in JSON format
-    try:
-        payload = json.loads(message)
-    except json.JSONDecodeError as e:
-        logger.error(f"Failed to decode the message body: {e}")
-        return
+    # # Assuming the message body contains a list of items in JSON format
+    # try:
+    #     payload = json.loads(message)
+    # except json.JSONDecodeError as e:
+    #     logger.error(f"Failed to decode the message body: {e}")
+    #     return
 
-    # Order the payment data
-    ordered_data = order_items(payload)
+    # # Order the payment data
+    # ordered_data = order_items(payload)
 
-    # Update the database
-    try:
-        update_database(ordered_data)
-    except Exception as e:
-        logger.error(f"Failed to update database: {e}")
+    # # Update the database
+    # try:
+    #     update_database(ordered_data)
+    # except Exception as e:
+    #     logger.error(f"Failed to update database: {e}")
