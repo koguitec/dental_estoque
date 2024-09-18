@@ -2,8 +2,8 @@ import azure.functions as func
 import json
 import logging
 
-from include.db import update_database
-from helpers import order_items
+from .include.db import update_database
+from .helpers import order_items
 
 logger = logging.getLogger(__name__)
 
