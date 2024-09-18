@@ -1,1 +1,0 @@
-from .order_items import order_items
