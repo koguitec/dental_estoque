@@ -21,15 +21,17 @@ sql_query = """
 """
 
 
-def update_database(payload: list[dict]) -> None:
+def update_database(payload: list[tuple]) -> None:
     """Update stock levels in the database.
 
     Args:
         payload (list[tuple]): List of tuples containing stock data.
     """
+    logger.debug("Reading connection string.")
     connection_string = os.environ["DB_CONN_STR"]
 
     try:
+        logger.info(f"Writing {len(payload)} entries to database...")
         conn = connect(connection_string)
         cursor = conn.cursor()
         cursor.fast_executemany = True
@@ -38,7 +40,7 @@ def update_database(payload: list[dict]) -> None:
         cursor.executemany(sql_query, payload)
 
         conn.commit()
-        logger.info("Datatbase updated successfully.")
+        logger.info("Database updated successfully.")
     except Exception as e:
         logger.error(f"Error updating database: {e}")
         raise
