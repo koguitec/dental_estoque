@@ -50,6 +50,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    __environment__
     
     steps:
       - name: Download artifact from build job
@@ -67,4 +68,4 @@ jobs:
           app-name: 'dental-estoque-dev'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8C001C27F0914F3F945ACA21E454BE1C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4FF80B28B9CF40689F8D61A5806188AE }}
